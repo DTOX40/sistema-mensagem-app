@@ -48,8 +48,9 @@ Para executar todos os casos de teste, utilize o seguinte comando
 ```bash
 $ bundle exec rspec
 
-# API Documentation
-
+```
+## API Documentation
+```bash
 ## Autenticação
 
 ### Login
@@ -61,15 +62,7 @@ $ bundle exec rspec
   "email": "admin1@example.com",
   "password": "123456"
 }
-Logout
-Endpoint: DELETE /auth/sign_out
 
-Headers:
-
-access-token
-client
-uid
-Usuários
 Listar Usuários
 Endpoint: GET /api/v1/users
 
@@ -89,10 +82,6 @@ Endpoint: GET /api/v1/admin/users/:id/suspend
 Deletar Usuário
 Endpoint: DELETE /api/v1/admin/users/:id
 
-Login:
-Método: POST
-URL: http://localhost:3000/auth/sign_in
-
 Body (raw, JSON):
 {
   "email": "admin1@example.com",
@@ -101,3 +90,4 @@ Body (raw, JSON):
 
 Cache
 O sistema utiliza Redis para cache. Configuração básica pode ser encontrada no arquivo de configuração do ambiente (config/environments/development.rb).
+

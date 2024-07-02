@@ -13,12 +13,18 @@ gem 'devise_token_auth'
 gem 'active_model_serializers'
 gem 'rack-cors'
 
-
 group :development, :test do
   gem 'dotenv-rails'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 5.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'database_cleaner-active_record'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
-group :development do
-  # gem "spring"
+group :test do
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end

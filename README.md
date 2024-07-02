@@ -24,9 +24,9 @@ Sistema de Mensagem App é uma aplicação Rails para gerenciar usuários com fu
 
 1. Clone o repositório:
 
-   ```sh
-   git clone https://github.com/usuario/sistema-mensagem-app.git
-   cd sistema-mensagem-app
+  ```sh
+  git clone https://github.com/usuario/sistema-mensagem-app.git
+  cd sistema-mensagem-app
 
 ## Setup
 ```bash
@@ -50,28 +50,35 @@ $ bundle exec rspec
 ```
 ## API Documentation
 ```bash
-## Autenticação
 
-### Login
-**Endpoint:** `POST /auth/sign_in`
 
-**Request Body:**
-```json
+Instruções de Requisições
+Criar um Novo Usuário
+Endpoint: POST /auth URL: http://localhost:3000/auth
+
+Request Body:
+{
+  "email": "novo.usuario@example.com",
+  "password": "123456",
+  "password_confirmation": "123456",
+  "name": "Novo Usuário"
+}
+
+Tornar Usuário Inativo (Suspender)
+
+Método: GET
+
+URL: http://localhost:3000/api/v1/admin/users/6/suspend
+
+Headers:
+
+access-token: seu_access_token
+client: seu_client
+uid: seu_uid
+
 
 Listar Usuários
 Endpoint: GET /api/v1/users
-
-Atualizar Usuário
-Endpoint: PUT /api/v1/users/:id
-
-Suspender/ Usuário
-Endpoint: GET /api/v1/admin/users/:id/suspend
-Método: GET
-Ativar
-URL: http://localhost:3000/api/v1/admin/users/6/suspend
-
-Deletar Usuário
-Endpoint: DELETE /api/v1/admin/users/:id
 
 Busca e Ordenação de Usuários
 Endpoint: POST /api/v1/users/search
@@ -81,6 +88,15 @@ Endpoint: POST /api/v1/users/search
   "direction": "asc"
 }
 
+Atualizar Usuário
+Endpoint: PUT /api/v1/users/:id
+
+
+Deletar Usuário
+Endpoint: DELETE /api/v1/admin/users/:id
+
+
 # Cache
-O sistema utiliza Redis para cache. Configuração básica pode ser encontrada no arquivo de configuração do ambiente (config/environments/development.rb).
+O sistema utiliza Redis para cache. Configuração básica pode ser encontrada no arquivo de configuração
+do ambiente (config/environments/development.rb).
 

@@ -49,12 +49,10 @@ Rails.application.configure do
   
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.cache_store = :redis_store, {
-  host: "localhost",
-  port: 6379,
-  db: 0,
-  namespace: "cache",
-  expires_in: 1.hour,
-  redis_options: { driver: :hiredis }
-}
+  config.cache_store = :redis_cache_store, { 
+    url: ENV['REDIS_URL'],
+    expires_in: 1.hour,
+    redis_options: { ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
+  }
+
 end

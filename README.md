@@ -57,10 +57,6 @@ $ bundle exec rspec
 
 **Request Body:**
 ```json
-{
-  "email": "admin1@example.com",
-  "password": "123456"
-}
 
 Listar Usuários
 Endpoint: GET /api/v1/users
@@ -68,25 +64,23 @@ Endpoint: GET /api/v1/users
 Atualizar Usuário
 Endpoint: PUT /api/v1/users/:id
 
-Request Body:
-{
-  "user": {
-    "name": "Novo Nome"
-  }
-}
-
-Suspender Usuário
+Suspender/ Usuário
 Endpoint: GET /api/v1/admin/users/:id/suspend
+Método: GET
+Ativar
+URL: http://localhost:3000/api/v1/admin/users/6/suspend
 
 Deletar Usuário
 Endpoint: DELETE /api/v1/admin/users/:id
 
-Body (raw, JSON):
+Busca e Ordenação de Usuários
+Endpoint: POST /api/v1/users/search
 {
-  "email": "admin1@example.com",
-  "password": "123456"
+  "keyword": "search_term",
+  "sort": ["name"],
+  "direction": "asc"
 }
 
-Cache
+# Cache
 O sistema utiliza Redis para cache. Configuração básica pode ser encontrada no arquivo de configuração do ambiente (config/environments/development.rb).
 

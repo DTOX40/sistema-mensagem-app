@@ -1,24 +1,103 @@
-# README
+# Sistema de Mensagem App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema de Mensagem App é uma aplicação Rails para gerenciar usuários com funcionalidades de autenticação, suspensão e envio de emails de boas-vindas.
 
-Things you may want to cover:
+## Sumário
 
-* Ruby version
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Configuração](#configuração)
+- [Execução](#execução)
+- [Testes](#testes)
+- [API Endpoints](#api-endpoints)
+- [Cache](#cache)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-* System dependencies
+## Pré-requisitos
 
-* Configuration
+- Ruby 3.2.0
+- Rails 7.0.8.4
+- PostgreSQL
+- Redis
 
-* Database creation
+## Instalação
 
-* Database initialization
+1. Clone o repositório:
 
-* How to run the test suite
+   ```sh
+   git clone https://github.com/usuario/sistema-mensagem-app.git
+   cd sistema-mensagem-app
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setup
+```bash
+# Instalar gems
+$ bundle install
 
-* Deployment instructions
+# Cria o banco de dados
+$ rails db:create
 
-* ...
+# Rodar as migrações no banco de dados
+$ rails db:migrate
+
+# Subir o servidor local em localhost:3000
+$ rails s
+```
+## Testes
+Para executar todos os casos de teste, utilize o seguinte comando
+```bash
+$ bundle exec rspec
+
+# API Documentation
+
+## Autenticação
+
+### Login
+**Endpoint:** `POST /auth/sign_in`
+
+**Request Body:**
+```json
+{
+  "email": "admin1@example.com",
+  "password": "123456"
+}
+Logout
+Endpoint: DELETE /auth/sign_out
+
+Headers:
+
+access-token
+client
+uid
+Usuários
+Listar Usuários
+Endpoint: GET /api/v1/users
+
+Atualizar Usuário
+Endpoint: PUT /api/v1/users/:id
+
+Request Body:
+{
+  "user": {
+    "name": "Novo Nome"
+  }
+}
+
+Suspender Usuário
+Endpoint: GET /api/v1/admin/users/:id/suspend
+
+Deletar Usuário
+Endpoint: DELETE /api/v1/admin/users/:id
+
+Login:
+Método: POST
+URL: http://localhost:3000/auth/sign_in
+
+Body (raw, JSON):
+{
+  "email": "admin1@example.com",
+  "password": "123456"
+}
+
+Cache
+O sistema utiliza Redis para cache. Configuração básica pode ser encontrada no arquivo de configuração do ambiente (config/environments/development.rb).

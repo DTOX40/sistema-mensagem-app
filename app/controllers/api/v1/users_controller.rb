@@ -7,8 +7,10 @@ module Api
       before_action :set_user, only: [:update, :suspend, :destroy]
 
       def index
-        users = User.all
-        render json: users, status: :ok
+        @users = Rails.cache.fetch('users', expires_in: 10.minutes) do
+          User.all.to_a
+        end
+        render json: @users, status: :ok
       end
 
       def update

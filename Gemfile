@@ -12,6 +12,8 @@ gem 'devise'
 gem 'devise_token_auth'
 gem 'active_model_serializers'
 gem 'rack-cors'
+gem 'redis-rails'
+gem 'redis'
 
 group :development, :test do
   gem 'dotenv-rails'

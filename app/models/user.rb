@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  after_save :clear_cache
+  after_destroy :clear_cache
+
   validates :name, presence: true
   validates :email, uniqueness: true
 
@@ -36,6 +39,10 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def clear_cache
+    Rails.cache.delete('users')
+  end
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_later

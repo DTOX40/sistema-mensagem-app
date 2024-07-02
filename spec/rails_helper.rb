@@ -42,6 +42,10 @@ RSpec.configure do |config|
     driven_by(:selenium_chrome_headless)
   end
 
+  config.before(:each) do
+    Rails.cache.clear
+  end
+
   config.include RequestSpecHelper, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request

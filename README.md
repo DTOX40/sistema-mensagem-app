@@ -6,10 +6,9 @@ Sistema de Mensagem App é uma aplicação Rails para gerenciar usuários com fu
 
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Configuração](#configuração)
-- [Execução](#execução)
+- [Execução](#instalação)
 - [Testes](#testes)
-- [API Endpoints](#api-endpoints)
+- [API Endpoints](#testes)
 - [Cache](#cache)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
